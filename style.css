@@ -1,0 +1,86 @@
+/* 1. Global Styles */
+:root {
+    --sans-serif: "Roboto";
+    --bg-color: hsl(145, 100%, 98%);
+    --color:  hsl(145, 65%, 10%);
+    --accent: #c0392b;
+    --tint:  hsl(145, 100%, 80%);
+  }
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  
+  /* 2. Typography Styles */
+  
+  body, ::placeholder{
+    font-family: var(--sans-serif);
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+    color: var(--color);
+    background-color: var(--bg-color);
+  }
+  
+  h1, h2, h3, h4, h5, h6, a {
+    color: var(--accent);
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  /* 3. Structure Styles */
+  @media only screen and (min-width: 1024px){
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+       width: 25vw;
+      height: 100vh;
+    }
+    #main-doc {
+      padding-left: 30vw;
+      padding-top: 30px;
+    }
+  }
+  
+  /*4. Module Styles */
+  #navbar {
+    border-right: 3px solid var(--accent);
+  }
+
+  
+  
+  /*5. Component Styles*/
+  .navbar-title {
+    text-align: center;
+    padding: 5px;
+  }
+  
+  .navbar-links {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    max-height: 25vh;
+  }
+  
+  
+  @media only screen AND (min-width: 1024px){
+    .navbar-links {
+      max-height: 100vh;
+    }
+    #nav-bar {
+      max-height: 100vh;
+    }
+  }
+  
+  .navbar-links a:first-child {
+    border: 1px solid var(--accent);
+    border-right: none;
+  }
+  
+  .navbar-links a {
+    border-bottom: 1px solid var(--accent);  
+    padding: 5px 20px;
+  }
