@@ -1,10 +1,10 @@
 /* 1. Global Styles */
 :root {
     --sans-serif: "Roboto";
-    --bg-color: hsl(145, 100%, 98%);
-    --color:  hsl(145, 65%, 10%);
-    --accent: #c0392b;
-    --tint:  hsl(145, 100%, 80%);
+    --bg-color: hsl(120, 100%, 98%);
+    --color:  hsl(120, 60%, 33%);
+    --accent: hsl(0, 66%, 33%);
+    --tint:  hsl(120, 100%, 95%);
   }
   * {
     padding: 0;
@@ -30,7 +30,23 @@
   a {
     text-decoration: none;
   }
+  a::onhover {
+    background-color: var(--accent);
+  }
+  p {
+    text-align: justify;
+  }
+
+  code {
+    color: var(--accent);
+  }
   /* 3. Structure Styles */
+  #main-doc {
+    padding-top: 30px;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+  }
+
   @media only screen and (min-width: 1024px){
     #navbar {
       position: fixed;
@@ -45,13 +61,12 @@
     }
   }
 
-  #main-doc {
-    padding-top: 30px;
-  }
+ 
   
   /*4. Module Styles */
   #navbar {
     border-right: 3px solid var(--accent);
+    background-color: var(--tint);
   }
 
   
@@ -88,3 +103,41 @@
     border-bottom: 1px solid var(--accent);  
     padding: 5px 20px;
   }
+
+  .req-list {
+    width: 80%;
+    margin: 0 auto;
+    overflow: auto;
+    background-color: var(--tint);
+  }
+
+  @media only screen AND (min-width: 480px) {
+    .req-list {
+      overflow: visible;
+      background-color: var(--bg-color);
+    }
+  }
+
+
+  .req-list li {
+    position: relative;
+  }
+
+.req-list li:before {
+  content:"";
+  height: 5px;
+  width: 5px;
+  border:1px  solid var(--accent);
+  position: absolute;
+  top: 0.5em;
+  left: -1em;
+  border-radius: 50%;
+
+}
+
+.code--block {
+  display: block;
+  background-color: var(--tint);
+  line-height: 2em;
+  color: var(--accent);
+}

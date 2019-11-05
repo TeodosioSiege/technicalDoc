@@ -24,11 +24,14 @@
         </nav>
         
         <main id="main-doc">
+            <h1 class="navbar-title">Laravel Installation</h1><br>
           <section class="main-section" id="server_requirements">
             <header><h2>Server Requirements</h2></header>
-            <p>The Laravel framework has a few system requirements. All of these requirements are satisfied by the Laravel Homestead virtual machine, so it's highly recommended that you use Homestead as your local Laravel development environment.</p>
-            <p>However, if you are not using Homestead, you will need to make sure your server meets the following requirements:</p>
-            <ul>
+            <br>
+            <p>The Laravel framework has a few system requirements. All of these requirements are satisfied by the <a href="https://laravel.com/docs/6.x/homestead" target="_blank">Laravel Homestead</a> virtual machine, so it's highly recommended that you use Homestead as your local Laravel development environment.</p>
+            <br><p>However, if you are not using Homestead, you will need to make sure your server meets the following requirements:</p>
+            <br>
+            <ul type="none" class="req-list">
               <li>PHP >= 7.2.0</li>
               <li>BCMath PHP Extension</li>
               <li>Ctype PHP Extension</li>
@@ -40,24 +43,51 @@
               <li>XML PHP Extension</li>
             </ul>
           </section>
+          <br>
           <section class="main-section" id="installing_laravel">
             <header><h2>Installing Laravel</h2></header>
-            <p><code>Lorem</code><code>Lorem</code> ipsum dolor sit amet consectetur adipisicing elit. Temporibus cupiditate quod esse dicta? Cum id fugit esse ratione pariatur fuga hic sapiente, amet nemo voluptates blanditiis voluptatum quas, architecto ipsum.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cupiditate quod esse dicta? Cum id fugit esse ratione pariatur fuga hic sapiente, amet nemo voluptates blanditiis voluptatum quas, architecto ipsum.</p>
-          </section>
+            <p>Laravel utilizes <a href="https://getcomposer.org/" target="_blank">Composer</a> to manage its dependencies. So, before using Laravel, make sure you have Composer installed on your machine.</p>
+            <br><h3>Via Laravel Installer</h3><br>
+            <p>First, download the Laravel installer using Composer:</p><br>
+            <code class="code--block">composer global require laravel/installer</code><br>
+            <p>Make sure to place Composer's system-wide vendor bin directory in your <code>$PATH</code> so the laravel executable can be located by your system. This directory exists in different locations based on your operating system; however, some common locations include:</p>
+            <br>
+            <ul type="none" class="req-list">
+              <li>macOS and GNU / Linux Distributions: <code>$HOME/.config/composer/vendor/bin</code></li>
+              <li>Windows: <code>%USERPROFILE%\AppData\Roaming\Composer\vendor\bin</code></li>
+            </ul>
+            <br>
+            <p>Once installed, the <code>laravel new</code> command will create a fresh Laravel installation in the directory you specify. For instance, <code>laravel new blog</code> will create a directory named <code>blog</code> containing a fresh Laravel installation with all of Laravel's dependencies already installed:</p>
+          <br>
+          <code class="code--block">laravel new blog</code>
+          <br>
+          <h3>Via Composer Create-Project</h3>
+          <br>
+          <p>Alternatively, you may also install Laravel by issuing the <code>Composer create-project</code> command in your terminal:</p>
+          <br>
+          <code class="code--block">composer create-project --prefer-dist laravel/laravel blog</code>
+          <br>
+          <h3>Local Development Server</h3><br>
+          <p>If you have PHP installed locally and you would like to use PHP's built-in development server to serve your application, you may use the <code>serve</code> Artisan command. This command will start a development server at <code>http://localhost:8000:</code></p>
+          <br>
+          <code class="code--block">php artisan serve</code>
+          <br>
+          <p>More robust local development options are available via <a href="https://laravel.com/docs/6.x/homestead" target="_blank">Homestead</a> and <a href="https://laravel.com/docs/6.x/valet" target="_blank">Valet</a>.</p>
+          <br>
+        </section>
           <section class="main-section" id="topic_3">
             <header><h2>Topic 3</h2></header>
-            <p><code>Lorem</code> ipsum dolor sit amet consectetur adipisicing elit. Temporibus cupiditate quod esse dicta? Cum id fugit esse ratione pariatur fuga hic sapiente, amet nemo voluptates blanditiis voluptatum quas, architecto ipsum.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cupiditate quod esse dicta? Cum id fugit esse ratione pariatur fuga hic sapiente, amet nemo voluptates blanditiis voluptatum quas, architecto ipsum.</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cupiditate quod esse dicta? Cum id fugit esse ratione pariatur fuga hic sapiente, amet nemo voluptates blanditiis voluptatum quas, architecto ipsum.</p>
           </section>
           <section class="main-section" id="topic_4">
             <header><h2>Topic 4</h2></header>
-            <p><code>Lorem</code> ipsum dolor sit amet consectetur adipisicing elit. Temporibus cupiditate quod esse dicta? Cum id fugit esse ratione pariatur fuga hic sapiente, amet nemo voluptates blanditiis voluptatum quas, architecto ipsum.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cupiditate quod esse dicta? Cum id fugit esse ratione pariatur fuga hic sapiente, amet nemo voluptates blanditiis voluptatum quas, architecto ipsum.</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cupiditate quod esse dicta? Cum id fugit esse ratione pariatur fuga hic sapiente, amet nemo voluptates blanditiis voluptatum quas, architecto ipsum.</p>
           </section>
           <section class="main-section" id="topic_5">
             <header><h2>Topic 5</h2></header>
-            <p><code>Lorem</code> ipsum dolor sit amet consectetur adipisicing elit. Temporibus cupiditate quod esse dicta? Cum id fugit esse ratione pariatur fuga hic sapiente, amet nemo voluptates blanditiis voluptatum quas, architecto ipsum.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cupiditate quod esse dicta? Cum id fugit esse ratione pariatur fuga hic sapiente, amet nemo voluptates blanditiis voluptatum quas, architecto ipsum.</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cupiditate quod esse dicta? Cum id fugit esse ratione pariatur fuga hic sapiente, amet nemo voluptates blanditiis voluptatum quas, architecto ipsum.</p>
           </section>
         </main>
