@@ -16,9 +16,9 @@
             <div class="navbar-links">
             <a href="#server_requirements" class="nav-link">Server Requirements</a>
             <a href="#installing_laravel" class="nav-link">Installing Laravel</a>
-            <a href="#topic_3" class="nav-link">Topic 3</a>
-            <a href="#topic_4" class="nav-link">Topic 4</a>
-            <a href="#topic_5" class="nav-link">Topic 5</a>
+            <a href="#configuration" class="nav-link">Configuration</a>
+            <a href="#web_server_configuration" class="nav-link">Web Server Configuration</a>
+            <a href="#pretty_urls" class="nav-link">Pretty URLs</a>
              </div>
           </header>
         </nav>
@@ -75,21 +75,78 @@
           <p>More robust local development options are available via <a href="https://laravel.com/docs/6.x/homestead" target="_blank">Homestead</a> and <a href="https://laravel.com/docs/6.x/valet" target="_blank">Valet</a>.</p>
           <br>
         </section>
-          <section class="main-section" id="topic_3">
-            <header><h2>Topic 3</h2></header>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cupiditate quod esse dicta? Cum id fugit esse ratione pariatur fuga hic sapiente, amet nemo voluptates blanditiis voluptatum quas, architecto ipsum.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cupiditate quod esse dicta? Cum id fugit esse ratione pariatur fuga hic sapiente, amet nemo voluptates blanditiis voluptatum quas, architecto ipsum.</p>
+          <section class="main-section" id="configuration">
+            <header><h2>Configuration</h2></header><br>
+            <h3>Public Directory</h3><br>
+            <p>After installing Laravel, you should configure your web server's document / web root to be the <code>public</code> directory. The <code>index.php</code> in this directory serves as the front controller for all HTTP requests entering your application.</p>
+            <br>
+            <h3>Configuration Files</h3>
+            <br>
+            <p>All of the configuration files for the Laravel framework are stored in the <code>config</code> directory. Each option is documented, so feel free to look through the files and get familiar with the options available to you.</p>
+            <br>
+            <h3>Directory Permissions</h3>
+            <br>
+            <p>After installing Laravel, you may need to configure some permissions. Directories within the <code>storage</code> and the <code>bootstrap/cache</code> directories should be writable by your web server or Laravel will not run. If you are using the <a href="https://laravel.com/docs/6.x/homestead" target="_blank">Homestead</a> virtual machine, these permissions should already be set.</p>
+            <br>
+            <h3>Application Key</h3>
+            <br>
+            <p>The next thing you should do after installing Laravel is set your application key to a random string. If you installed Laravel via Composer or the Laravel installer, this key has already been set for you by the php <code>artisan key:generate</code> command.</p>
+            <br>
+            <p>Typically, this string should be 32 characters long. The key can be set in the <code>.env</code> environment file. If you have not copied the <code>.env.example</code> file to a new file named <code>.env</code>, you should do that now.<strong>If the application key is not set, your user sessions and other encrypted data will not be secure!</strong> </p>
+            <br>
+            <h3>Additional Configuration</h3>
+            <br>
+            <p>Laravel needs almost no other configuration out of the box. You are free to get started developing! However, you may wish to review the <code>config/app.php</code> file and its documentation. It contains several options such as <code>timezone</code> and <code>locale</code> that you may wish to change according to your application.</p>
+            <br>
+            <p>You may also want to configure a few additional components of Laravel, such as:</p>
+            <br>
+            <ul class="req-list" type="none">
+              <a href="https://laravel.com/docs/6.x/cache#configuration" target="_blank"><li>Cache</li></a>
+              <a href="https://laravel.com/docs/6.x/database#configuration" target="_blank"><li>Database</li></a>
+              <a href="https://laravel.com/docs/6.x/session#configuration" target="_blank"><li>Session</li></a>
+            </ul>
+            <br>
           </section>
-          <section class="main-section" id="topic_4">
-            <header><h2>Topic 4</h2></header>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cupiditate quod esse dicta? Cum id fugit esse ratione pariatur fuga hic sapiente, amet nemo voluptates blanditiis voluptatum quas, architecto ipsum.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cupiditate quod esse dicta? Cum id fugit esse ratione pariatur fuga hic sapiente, amet nemo voluptates blanditiis voluptatum quas, architecto ipsum.</p>
+          <section class="main-section" id="web_server_configuration">
+            <header><h2>Web Server Configuration</h2></header><br>
+            <h3>Directory Configuration</h3>
+            <br>
+            <p>Laravel should always be served out of the root of the "web directory" configured for your web server. You should not attempt to serve a Laravel application out of a sub-directory of the "web directory". Attempting to do so could expose sensitive files present within your application.</p>
+            <br>
           </section>
-          <section class="main-section" id="topic_5">
-            <header><h2>Topic 5</h2></header>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cupiditate quod esse dicta? Cum id fugit esse ratione pariatur fuga hic sapiente, amet nemo voluptates blanditiis voluptatum quas, architecto ipsum.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cupiditate quod esse dicta? Cum id fugit esse ratione pariatur fuga hic sapiente, amet nemo voluptates blanditiis voluptatum quas, architecto ipsum.</p>
+          <section class="main-section" id="pretty_urls">
+            <header><h2>Pretty URLs</h2></header>
+            <br>
+            <h3>Apache</h3>
+            <br>
+            <p>Laravel includes a <code>public/.htaccess</code> file that is used to provide URLs without the <code>index.php</code> front controller in the path. Before serving Laravel with Apache, be sure to enable the <code>mod_rewrite</code> module so the <code>.htaccess</code> file will be honored by the server.</p>
+            <br>
+            <p>If the <code>.htaccess</code> file that ships with Laravel does not work with your Apache installation, try this alternative:</p>
+            <br>
+            <code class="code--block code--overflow"><pre>Options +FollowSymLinks -Indexes
+RewriteEngine On
+              
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+              
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]</pre></code>
+              <br>
+              <h3>Nginx</h3>
+              <br>
+              <p>If you are using Nginx, the following directive in your site configuration will direct all requests to the <code>index.php</code> front controller:</p>
+              <br>
+              <code class="code--block code--overflow"><pre>location / {
+try_files $uri $uri/ /index.php?$query_string;
+}</pre></code>
+                <br>
+
           </section>
+          <h2>Reference</h2>
+          <br>
+          <p>All the documentation in this page is taken from <a href="https://laravel.com/docs/6.x" target="_blank">Laravel Documentation</a></p>
+          <br>
         </main>
         
         <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>  

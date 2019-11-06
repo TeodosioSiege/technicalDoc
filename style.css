@@ -27,12 +27,15 @@
     color: var(--accent);
   }
   
-  a {
+  .nav-link {
     text-decoration: none;
   }
-  a::onhover {
+  .nav-link:hover {
     background-color: var(--accent);
+    color: var(--tint);
   }
+
+  
   p {
     text-align: justify;
   }
@@ -140,4 +143,19 @@
   background-color: var(--tint);
   line-height: 2em;
   color: var(--accent);
+}
+
+
+.code--overflow {
+  width: 80%;
+  margin: 0 auto;
+  overflow: auto;
+  background-color: var(--tint);
+}
+
+@media only screen AND (min-width: 480px) {
+  .code--overflow {
+    overflow: visible;
+    background-color: var(--bg-color);
+  }
 }
