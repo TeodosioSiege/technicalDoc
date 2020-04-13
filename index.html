@@ -1,129 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
-    <link rel="stylesheet" href="style.css" type="text/css">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css" type="text/css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Technical Documentation</title>
-</head>
-<body>
-        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
 
-        <nav id="navbar">
-          <header>
-            <h1 class="navbar-title">Laravel Installation</h1>
-            <div class="navbar-links">
-            <a href="#server_requirements" class="nav-link">Server Requirements</a>
-            <a href="#installing_laravel" class="nav-link">Installing Laravel</a>
-            <a href="#configuration" class="nav-link">Configuration</a>
-            <a href="#web_server_configuration" class="nav-link">Web Server Configuration</a>
-            <a href="#pretty_urls" class="nav-link">Pretty URLs</a>
-             </div>
-          </header>
-        </nav>
-        
-        <main id="main-doc">
-            <h1 class="navbar-title">Laravel Installation</h1><br>
-          <section class="main-section" id="server_requirements">
-            <header><h2>Server Requirements</h2></header>
-            <br>
-            <p>The Laravel framework has a few system requirements. All of these requirements are satisfied by the <a href="https://laravel.com/docs/6.x/homestead" target="_blank">Laravel Homestead</a> virtual machine, so it's highly recommended that you use Homestead as your local Laravel development environment.</p>
-            <br><p>However, if you are not using Homestead, you will need to make sure your server meets the following requirements:</p>
-            <br>
-            <ul type="none" class="req-list">
-              <li>PHP >= 7.2.0</li>
-              <li>BCMath PHP Extension</li>
-              <li>Ctype PHP Extension</li>
-              <li>JSON PHP Extension</li>
-              <li>Mbstring PHP Extension</li>
-              <li>OpenSSL PHP Extension</li>
-              <li>PDO PHP Extension</li>
-              <li>Tokenizer PHP Extension</li>
-              <li>XML PHP Extension</li>
-            </ul>
-          </section>
-          <br>
-          <section class="main-section" id="installing_laravel">
-            <header><h2>Installing Laravel</h2></header>
-            <p>Laravel utilizes <a href="https://getcomposer.org/" target="_blank">Composer</a> to manage its dependencies. So, before using Laravel, make sure you have Composer installed on your machine.</p>
-            <br><h3>Via Laravel Installer</h3><br>
-            <p>First, download the Laravel installer using Composer:</p><br>
-            <code class="code--block">composer global require laravel/installer</code><br>
-            <p>Make sure to place Composer's system-wide vendor bin directory in your <code>$PATH</code> so the laravel executable can be located by your system. This directory exists in different locations based on your operating system; however, some common locations include:</p>
-            <br>
-            <ul type="none" class="req-list">
-              <li>macOS and GNU / Linux Distributions: <code>$HOME/.config/composer/vendor/bin</code></li>
-              <li>Windows: <code>%USERPROFILE%\AppData\Roaming\Composer\vendor\bin</code></li>
-            </ul>
-            <br>
-            <p>Once installed, the <code>laravel new</code> command will create a fresh Laravel installation in the directory you specify. For instance, <code>laravel new blog</code> will create a directory named <code>blog</code> containing a fresh Laravel installation with all of Laravel's dependencies already installed:</p>
-          <br>
-          <code class="code--block">laravel new blog</code>
-          <br>
-          <h3>Via Composer Create-Project</h3>
-          <br>
-          <p>Alternatively, you may also install Laravel by issuing the <code>Composer create-project</code> command in your terminal:</p>
-          <br>
-          <code class="code--block">composer create-project --prefer-dist laravel/laravel blog</code>
-          <br>
-          <h3>Local Development Server</h3><br>
-          <p>If you have PHP installed locally and you would like to use PHP's built-in development server to serve your application, you may use the <code>serve</code> Artisan command. This command will start a development server at <code>http://localhost:8000:</code></p>
-          <br>
-          <code class="code--block">php artisan serve</code>
-          <br>
-          <p>More robust local development options are available via <a href="https://laravel.com/docs/6.x/homestead" target="_blank">Homestead</a> and <a href="https://laravel.com/docs/6.x/valet" target="_blank">Valet</a>.</p>
-          <br>
-        </section>
-          <section class="main-section" id="configuration">
-            <header><h2>Configuration</h2></header><br>
-            <h3>Public Directory</h3><br>
-            <p>After installing Laravel, you should configure your web server's document / web root to be the <code>public</code> directory. The <code>index.php</code> in this directory serves as the front controller for all HTTP requests entering your application.</p>
-            <br>
-            <h3>Configuration Files</h3>
-            <br>
-            <p>All of the configuration files for the Laravel framework are stored in the <code>config</code> directory. Each option is documented, so feel free to look through the files and get familiar with the options available to you.</p>
-            <br>
-            <h3>Directory Permissions</h3>
-            <br>
-            <p>After installing Laravel, you may need to configure some permissions. Directories within the <code>storage</code> and the <code>bootstrap/cache</code> directories should be writable by your web server or Laravel will not run. If you are using the <a href="https://laravel.com/docs/6.x/homestead" target="_blank">Homestead</a> virtual machine, these permissions should already be set.</p>
-            <br>
-            <h3>Application Key</h3>
-            <br>
-            <p>The next thing you should do after installing Laravel is set your application key to a random string. If you installed Laravel via Composer or the Laravel installer, this key has already been set for you by the php <code>artisan key:generate</code> command.</p>
-            <br>
-            <p>Typically, this string should be 32 characters long. The key can be set in the <code>.env</code> environment file. If you have not copied the <code>.env.example</code> file to a new file named <code>.env</code>, you should do that now.<strong>If the application key is not set, your user sessions and other encrypted data will not be secure!</strong> </p>
-            <br>
-            <h3>Additional Configuration</h3>
-            <br>
-            <p>Laravel needs almost no other configuration out of the box. You are free to get started developing! However, you may wish to review the <code>config/app.php</code> file and its documentation. It contains several options such as <code>timezone</code> and <code>locale</code> that you may wish to change according to your application.</p>
-            <br>
-            <p>You may also want to configure a few additional components of Laravel, such as:</p>
-            <br>
-            <ul class="req-list" type="none">
-              <a href="https://laravel.com/docs/6.x/cache#configuration" target="_blank"><li>Cache</li></a>
-              <a href="https://laravel.com/docs/6.x/database#configuration" target="_blank"><li>Database</li></a>
-              <a href="https://laravel.com/docs/6.x/session#configuration" target="_blank"><li>Session</li></a>
-            </ul>
-            <br>
-          </section>
-          <section class="main-section" id="web_server_configuration">
-            <header><h2>Web Server Configuration</h2></header><br>
-            <h3>Directory Configuration</h3>
-            <br>
-            <p>Laravel should always be served out of the root of the "web directory" configured for your web server. You should not attempt to serve a Laravel application out of a sub-directory of the "web directory". Attempting to do so could expose sensitive files present within your application.</p>
-            <br>
-          </section>
-          <section class="main-section" id="pretty_urls">
-            <header><h2>Pretty URLs</h2></header>
-            <br>
-            <h3>Apache</h3>
-            <br>
-            <p>Laravel includes a <code>public/.htaccess</code> file that is used to provide URLs without the <code>index.php</code> front controller in the path. Before serving Laravel with Apache, be sure to enable the <code>mod_rewrite</code> module so the <code>.htaccess</code> file will be honored by the server.</p>
-            <br>
-            <p>If the <code>.htaccess</code> file that ships with Laravel does not work with your Apache installation, try this alternative:</p>
-            <br>
-            <code class="code--block code--overflow"><pre>Options +FollowSymLinks -Indexes
+    <nav id="navbar">
+      <header>
+        <h1 class="navbar-title">Laravel Installation</h1>
+        <div class="navbar-links">
+          <a href="#server_requirements" class="nav-link"
+            >Server Requirements</a
+          >
+          <a href="#installing_laravel" class="nav-link">Installing Laravel</a>
+          <a href="#configuration" class="nav-link">Configuration</a>
+          <a href="#web_server_configuration" class="nav-link"
+            >Web Server Configuration</a
+          >
+          <a href="#pretty_urls" class="nav-link">Pretty URLs</a>
+        </div>
+      </header>
+    </nav>
+
+    <main id="main-doc">
+      <h1 class="navbar-title">Laravel Installation</h1>
+      <br />
+      <section class="main-section" id="server_requirements">
+        <header><h2>Server Requirements</h2></header>
+        <br />
+        <p>
+          The Laravel framework has a few system requirements. All of these
+          requirements are satisfied by the
+          <a href="https://laravel.com/docs/6.x/homestead" target="_blank"
+            >Laravel Homestead</a
+          >
+          virtual machine, so it's highly recommended that you use Homestead as
+          your local Laravel development environment.
+        </p>
+        <br />
+        <p>
+          However, if you are not using Homestead, you will need to make sure
+          your server meets the following requirements:
+        </p>
+        <br />
+        <ul type="none" class="req-list">
+          <li>PHP >= 7.2.0</li>
+          <li>BCMath PHP Extension</li>
+          <li>Ctype PHP Extension</li>
+          <li>JSON PHP Extension</li>
+          <li>Mbstring PHP Extension</li>
+          <li>OpenSSL PHP Extension</li>
+          <li>PDO PHP Extension</li>
+          <li>Tokenizer PHP Extension</li>
+          <li>XML PHP Extension</li>
+        </ul>
+      </section>
+      <br />
+      <section class="main-section" id="installing_laravel">
+        <header><h2>Installing Laravel</h2></header>
+        <p>
+          Laravel utilizes
+          <a href="https://getcomposer.org/" target="_blank">Composer</a> to
+          manage its dependencies. So, before using Laravel, make sure you have
+          Composer installed on your machine.
+        </p>
+        <br />
+        <h3>Via Laravel Installer</h3>
+        <br />
+        <p>First, download the Laravel installer using Composer:</p>
+        <br />
+        <code class="code--block"
+          >composer global require laravel/installer</code
+        ><br />
+        <p>
+          Make sure to place Composer's system-wide vendor bin directory in your
+          <code>$PATH</code> so the laravel executable can be located by your
+          system. This directory exists in different locations based on your
+          operating system; however, some common locations include:
+        </p>
+        <br />
+        <ul type="none" class="req-list">
+          <li>
+            macOS and GNU / Linux Distributions:
+            <code>$HOME/.config/composer/vendor/bin</code>
+          </li>
+          <li>
+            Windows:
+            <code>%USERPROFILE%\AppData\Roaming\Composer\vendor\bin</code>
+          </li>
+        </ul>
+        <br />
+        <p>
+          Once installed, the <code>laravel new</code> command will create a
+          fresh Laravel installation in the directory you specify. For instance,
+          <code>laravel new blog</code> will create a directory named
+          <code>blog</code> containing a fresh Laravel installation with all of
+          Laravel's dependencies already installed:
+        </p>
+        <br />
+        <code class="code--block">laravel new blog</code>
+        <br />
+        <h3>Via Composer Create-Project</h3>
+        <br />
+        <p>
+          Alternatively, you may also install Laravel by issuing the
+          <code>Composer create-project</code> command in your terminal:
+        </p>
+        <br />
+        <code class="code--block"
+          >composer create-project --prefer-dist laravel/laravel blog</code
+        >
+        <br />
+        <h3>Local Development Server</h3>
+        <br />
+        <p>
+          If you have PHP installed locally and you would like to use PHP's
+          built-in development server to serve your application, you may use the
+          <code>serve</code> Artisan command. This command will start a
+          development server at <code>http://localhost:8000:</code>
+        </p>
+        <br />
+        <code class="code--block">php artisan serve</code>
+        <br />
+        <p>
+          More robust local development options are available via
+          <a href="https://laravel.com/docs/6.x/homestead" target="_blank"
+            >Homestead</a
+          >
+          and
+          <a href="https://laravel.com/docs/6.x/valet" target="_blank">Valet</a
+          >.
+        </p>
+        <br />
+      </section>
+      <section class="main-section" id="configuration">
+        <header><h2>Configuration</h2></header>
+        <br />
+        <h3>Public Directory</h3>
+        <br />
+        <p>
+          After installing Laravel, you should configure your web server's
+          document / web root to be the <code>public</code> directory. The
+          <code>index.php</code> in this directory serves as the front
+          controller for all HTTP requests entering your application.
+        </p>
+        <br />
+        <h3>Configuration Files</h3>
+        <br />
+        <p>
+          All of the configuration files for the Laravel framework are stored in
+          the <code>config</code> directory. Each option is documented, so feel
+          free to look through the files and get familiar with the options
+          available to you.
+        </p>
+        <br />
+        <h3>Directory Permissions</h3>
+        <br />
+        <p>
+          After installing Laravel, you may need to configure some permissions.
+          Directories within the <code>storage</code> and the
+          <code>bootstrap/cache</code> directories should be writable by your
+          web server or Laravel will not run. If you are using the
+          <a href="https://laravel.com/docs/6.x/homestead" target="_blank"
+            >Homestead</a
+          >
+          virtual machine, these permissions should already be set.
+        </p>
+        <br />
+        <h3>Application Key</h3>
+        <br />
+        <p>
+          The next thing you should do after installing Laravel is set your
+          application key to a random string. If you installed Laravel via
+          Composer or the Laravel installer, this key has already been set for
+          you by the php <code>artisan key:generate</code> command.
+        </p>
+        <br />
+        <p>
+          Typically, this string should be 32 characters long. The key can be
+          set in the <code>.env</code> environment file. If you have not copied
+          the <code>.env.example</code> file to a new file named
+          <code>.env</code>, you should do that now.<strong
+            >If the application key is not set, your user sessions and other
+            encrypted data will not be secure!</strong
+          >
+        </p>
+        <br />
+        <h3>Additional Configuration</h3>
+        <br />
+        <p>
+          Laravel needs almost no other configuration out of the box. You are
+          free to get started developing! However, you may wish to review the
+          <code>config/app.php</code> file and its documentation. It contains
+          several options such as <code>timezone</code> and
+          <code>locale</code> that you may wish to change according to your
+          application.
+        </p>
+        <br />
+        <p>
+          You may also want to configure a few additional components of Laravel,
+          such as:
+        </p>
+        <br />
+        <ul class="req-list" type="none">
+          <a
+            href="https://laravel.com/docs/6.x/cache#configuration"
+            target="_blank"
+            ><li>Cache</li></a
+          >
+          <a
+            href="https://laravel.com/docs/6.x/database#configuration"
+            target="_blank"
+            ><li>Database</li></a
+          >
+          <a
+            href="https://laravel.com/docs/6.x/session#configuration"
+            target="_blank"
+            ><li>Session</li></a
+          >
+        </ul>
+        <br />
+      </section>
+      <section class="main-section" id="web_server_configuration">
+        <header><h2>Web Server Configuration</h2></header>
+        <br />
+        <h3>Directory Configuration</h3>
+        <br />
+        <p>
+          Laravel should always be served out of the root of the "web directory"
+          configured for your web server. You should not attempt to serve a
+          Laravel application out of a sub-directory of the "web directory".
+          Attempting to do so could expose sensitive files present within your
+          application.
+        </p>
+        <br />
+      </section>
+      <section class="main-section" id="pretty_urls">
+        <header><h2>Pretty URLs</h2></header>
+        <br />
+        <h3>Apache</h3>
+        <br />
+        <p>
+          Laravel includes a <code>public/.htaccess</code> file that is used to
+          provide URLs without the <code>index.php</code> front controller in
+          the path. Before serving Laravel with Apache, be sure to enable the
+          <code>mod_rewrite</code> module so the <code>.htaccess</code> file
+          will be honored by the server.
+        </p>
+        <br />
+        <p>
+          If the <code>.htaccess</code> file that ships with Laravel does not
+          work with your Apache installation, try this alternative:
+        </p>
+        <br />
+        <code class="code--block code--overflow">
+          <pre>
+Options +FollowSymLinks -Indexes
 RewriteEngine On
               
 RewriteCond %{HTTP:Authorization} .
@@ -131,24 +271,38 @@ RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
               
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.php [L]</pre></code>
-              <br>
-              <h3>Nginx</h3>
-              <br>
-              <p>If you are using Nginx, the following directive in your site configuration will direct all requests to the <code>index.php</code> front controller:</p>
-              <br>
-              <code class="code--block code--overflow"><pre>location / {
+RewriteRule ^ index.php [L]</pre
+          >
+        </code>
+        <br />
+        <h3>Nginx</h3>
+        <br />
+        <p>
+          If you are using Nginx, the following directive in your site
+          configuration will direct all requests to the
+          <code>index.php</code> front controller:
+        </p>
+        <br />
+        <code class="code--block code--overflow">
+          <pre>
+location / {
 try_files $uri $uri/ /index.php?$query_string;
-}</pre></code>
-                <br>
+}</pre
+          >
+        </code>
+        <br />
+      </section>
+      <h2>Reference</h2>
+      <br />
+      <p>
+        All the documentation in this page is taken from
+        <a href="https://laravel.com/docs/6.x" target="_blank"
+          >Laravel Documentation</a
+        >
+      </p>
+      <br />
+    </main>
 
-          </section>
-          <h2>Reference</h2>
-          <br>
-          <p>All the documentation in this page is taken from <a href="https://laravel.com/docs/6.x" target="_blank">Laravel Documentation</a></p>
-          <br>
-        </main>
-        
-        <!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>   -->
-</body>
+    <!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>   -->
+  </body>
 </html>
