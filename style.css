@@ -5,6 +5,7 @@
   --color: hsl(120, 60%, 33%);
   --accent: hsl(0, 66%, 33%);
   --tint: hsl(120, 100%, 95%);
+  scroll-behavior: smooth;
 }
 * {
   padding: 0;
@@ -17,7 +18,7 @@
 body,
 ::placeholder {
   font-family: var(--sans-serif);
-  line-height: 1.5;
+  line-height: 2;
   letter-spacing: 0.1em;
   color: var(--color);
   background-color: var(--bg-color);
